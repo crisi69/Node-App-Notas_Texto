@@ -1,0 +1,26 @@
+{
+  "name": "app_notas_de_texto",
+  "version": "1.0.0",
+  "description": "- Se trata de una aplicación dónde los usuarios pueden crear notas de texto privadas y ponerlas en categorías personalizadas.\r - Cada nota tiene título, descripción, lugar y 1 foto.\r - Cada nota se puede añadir en una carpeta personalizada de categoría única.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "db": "node ./db/initDB"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.21.0",
+    "nodemon": "^2.0.19",
+    "prettier": "^2.7.1"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
+    "mysql2": "^2.3.3"
+  }
+}
