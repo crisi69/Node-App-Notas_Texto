@@ -1,4 +1,5 @@
 const getConnection = require('../getConnection');
+
 const { generateError } = require('../../helpers');
 
 const selectUserByEmailQuery = async (email) => {
@@ -15,9 +16,7 @@ const selectUserByEmailQuery = async (email) => {
         if (users.length < 1) {
             throw generateError('Wrong email', 404);
         }
-
         return users[0];
-
     } finally {
         if (connection) connection.release();
     }

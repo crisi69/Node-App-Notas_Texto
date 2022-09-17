@@ -4,15 +4,16 @@ const { generateError } = require('../../helpers');
 
 const newNote = async (req, res, next) => {
     try {
-        const { title, description } = req.body;
+        const { title, description, category } = req.body;
 
-        if (!title || !description) {
+        if (!title || !description || !category) {
             throw generateError('Empty fields', 400);
         }
 
         const idNote = await insertNoteQuery(
             title,
             description,
+            category,
             req.user.id
         );
 
@@ -23,6 +24,7 @@ const newNote = async (req, res, next) => {
                     id: idNote,
                     title,
                     description,
+                    category,
                     idUser: req.user.id,
                     createdAt: new Date(),
                 },

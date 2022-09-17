@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"dario\",\r\n    \"email\": \"dario@quique.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"raw": "{\r\n    \"username\": \"eustaquio\",\r\n    \"email\": \"eustaquio@hotmail.com\",\r\n    \"password\": \"123456\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -43,7 +43,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"dario@quique.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"raw": "{\r\n    \"email\": \"eustaquio@hotmail.com\",\r\n    \"password\": \"123456\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -64,6 +64,14 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Get Own User",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
 				}
 			]
 		},
@@ -77,13 +85,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6Im5vcm1hbCIsImlhdCI6MTY2MDkyNjMzNCwiZXhwIjoxNjYxNzkwMzM0fQ.hGIl1OawI3CLUDrAXchikIBs1fj9mDg1lnwRdvszJBQ",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwicm9sZSI6Im5vcm1hbCIsImlhdCI6MTY2MzI1NzU2NiwiZXhwIjoxNjY0MTIxNTY2fQ.Ier_m00ja5TPZOl3VqZkKtaYmXl3g7psq7FJ22THM_s",
 								"type": "default"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"Chipirones\",\r\n    \"description\": \"A la sarten.\"\r\n}\r\n",
+							"raw": "{\r\n    \"title\": \"Hotel Bahía\",\r\n    \"description\": \"Maravilloso hotel de 5 estrellas con todo lujo de detalles y unas preciosas vista a la Ría de Vigo.\",\r\n    \"category\": \"Hoteles\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -111,7 +119,13 @@
 					},
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwicm9sZSI6Im5vcm1hbCIsImlhdCI6MTY2MzI1NzU2NiwiZXhwIjoxNjY0MTIxNTY2fQ.Ier_m00ja5TPZOl3VqZkKtaYmXl3g7psq7FJ22THM_s",
+								"type": "default"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "",
@@ -146,13 +160,13 @@
 							}
 						],
 						"url": {
-							"raw": "{{Server}}/notes/11",
+							"raw": "{{Server}}/notes/8",
 							"host": [
 								"{{Server}}"
 							],
 							"path": [
 								"notes",
-								"11"
+								"8"
 							]
 						}
 					},
@@ -165,52 +179,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{User_1}}",
-								"type": "default"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "title",
-									"value": "pescado frito",
-									"type": "default"
-								}
-							],
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{Server}}/notes/3",
-							"host": [
-								"{{Server}}"
-							],
-							"path": [
-								"notes",
-								"3"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Category Note",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6Im5vcm1hbCIsImlhdCI6MTY2MDkyNjMzNCwiZXhwIjoxNjYxNzkwMzM0fQ.hGIl1OawI3CLUDrAXchikIBs1fj9mDg1lnwRdvszJBQ",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6Im5vcm1hbCIsImlhdCI6MTY2MzA5MDUxOSwiZXhwIjoxNjYzOTU0NTE5fQ.dm-UAQ6usTUC8H7PHyXoHTuB6zGQ2a1047Q8Foh6kXo",
 								"type": "default"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \r\n}",
+							"raw": "{\r\n    \"title\": \"Hotel Los Escudo\",\r\n    \"description\": \"Lujoso hotel situado en el barrio vigués de Alcabre\",\r\n    \"category\": \"Hoteles\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -218,14 +193,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{Server}}/notes/1/category",
+							"raw": "{{Server}}/notes/8",
 							"host": [
 								"{{Server}}"
 							],
 							"path": [
 								"notes",
-								"1",
-								"category"
+								"8"
 							]
 						}
 					},
@@ -238,18 +212,18 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6Im5vcm1hbCIsImlhdCI6MTY2MTQ1OTU5OSwiZXhwIjoxNjYyMzIzNTk5fQ.OZ3FiZuLJ1_P_Qvn96xfppnNevzwRGAsxEKyc3YgHSc",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwicm9sZSI6Im5vcm1hbCIsImlhdCI6MTY2MzI1NzU2NiwiZXhwIjoxNjY0MTIxNTY2fQ.Ier_m00ja5TPZOl3VqZkKtaYmXl3g7psq7FJ22THM_s",
 								"type": "default"
 							}
 						],
 						"url": {
-							"raw": "{{Server}}/notes/10",
+							"raw": "{{Server}}/notes/8",
 							"host": [
 								"{{Server}}"
 							],
 							"path": [
 								"notes",
-								"10"
+								"8"
 							]
 						}
 					},

@@ -2,7 +2,7 @@ const getConnection = require('../getConnection');
 
 const { generateError } = require('../../helpers');
 
-const selectAllNotesQuery = async () => {
+const selectUserNotesQuery = async (idUser) => {
     let connection;
 
     try {
@@ -10,24 +10,23 @@ const selectAllNotesQuery = async () => {
 
         let [notes] = await connection.query(
             `
-                SELECT N.id, 
-                    N.idUser,
-                    N.title, 
-                    N.createdAt 
-                FROM notes N
-                GROUP BY N.id
-                ORDER BY N.createdAt DESC
+                SELECT id, 
+                    title,
+                    category,
+                    createdAt 
+                FROM notes
+                WHERE idUser LIKE ?
             `,
+            [idUser]
         );
 
         if (notes.length < 1) {
             throw generateError('It does not exists any note', 404);
         }
-
         return notes;
     } finally {
         if (connection) connection.release();
     }
 };
 
-module.exports = selectAllNotesQuery;
+module.exports = selectUserNotesQuery;

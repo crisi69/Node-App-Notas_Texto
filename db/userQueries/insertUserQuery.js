@@ -1,5 +1,6 @@
 const getConnection = require('../getConnection');
 const bcrypt = require('bcrypt');
+
 const { generateError } = require('../../helpers');
 
 const insertUserQuery = async (username, email, password) => {
@@ -27,8 +28,6 @@ const insertUserQuery = async (username, email, password) => {
                 `,
                 [username, email, hashedPassword, new Date()]
              );
-
-
     } finally {
         if (connection) connection.release();
     }

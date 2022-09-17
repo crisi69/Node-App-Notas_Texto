@@ -11,7 +11,6 @@ const deleteNoteQuery = async (idNote) => {
             DELETE FROM notes WHERE id = ?`,
             [idNote]
         );
-
     } finally {
         if(connection) connection.release();
     }

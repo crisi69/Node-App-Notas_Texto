@@ -1,10 +1,8 @@
-const selectAllNotesQuery = require('../../db/noteQueries/selectAllNotesQuery');
+const selectUserNotesQuery = require('../../db/noteQueries/selectUserNotesQuery');
 
 const listNotes = async (req, res, next) => {
     try {
-        const { keyword } = req.query;
-
-        const notes = await selectAllNotesQuery(req.user?.id, keyword);
+        const notes = await selectUserNotesQuery(req.user.id);
 
         res.send({
             status: 'ok',

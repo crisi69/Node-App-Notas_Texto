@@ -19,22 +19,20 @@ const editNote = async (req, res, next) => {
         const note = await selectNoteByIdQuery(idNote);
 
 
-            title = title || note.title;
-            description = description || note.description;
+        title = title || note.title;
+        description = description || note.description;
+        category = category || note.category;
             
-            // Actualizamos los datos del usuario.
-            await udpateNoteQuery(title, description, idNote)
+        // Actualizamos los datos del usuario.
+        await udpateNoteQuery(title, description, category, idNote)
 
-            res.send({
-                status: 'ok',
-                message: 'Updated note',
-            });
-        } catch (err) {
-            next(err);
-        }
-    };
+        res.send({
+            status: 'ok',
+            message: 'Updated note',
+        });
+    } catch (err) {
+        next(err);
+    }
+};
 
 module.exports = editNote;
-
-// Le hemos dado un montón de vueltas a esta parte pero no hemos conseguido que arrancase. Hemos probado un montón de
-// versiones diferentes y ninguna nos ha funcionado. No sabemos si esta es la mejor versión. :')

@@ -39,43 +39,47 @@ const newUser = require('./controllers/users/newUser');
 const loginUser = require('./controllers/users/loginUser');
 
 
-
-
 // Registro de un nuevo usuario.
 app.post('/users', newUser);
 
 // Login de un usuario.
 app.post('/users/login', loginUser);
 
+
 /**
  * #####################
  * ## Endpoints Notes ##
  * #####################
  */
-
+// Creamos una nueva nota.
 const newNote = require('./controllers/notes/newNote');
+
+// Hacemos un listado de notas de un usuario.
 const listNotes = require('./controllers/notes/listNotes');
+
+// Seleccionamos una nota concreta.
 const getNote = require('./controllers/notes/getNote');
+
+// Editamos cualquier campo de una nota.
 const editNote = require('./controllers/notes/editNote');
-const categoryNote = require('./controllers/notes/categoryNote');
+
+// Eliminamos una nota.
 const deleteNote = require('./controllers/notes/deleteNote');
+
 
 // Crear una nueva nota.
 app.post('/notes', authUser, newNote);
 
-// Listamos notas.
-app.get('/notes', authUserOptional, listNotes);
+// Listar las notas de un usuario.
+app.get('/notes', authUser, listNotes);
 
 // Información de una nota en concreto.
 app.get('/notes/:idNote', authUserOptional, getNote);
 
-// Categorizamos una nota.
-app.post('/notes/:idNote/category', authUser, categoryNote);
-
-// Editamos una nota.
+// Editar una nota.
 app.put('/notes/:idNote', authUser, editNote);
 
-// Eliminamos una nota.
+// Eliminar una nota.
 app.delete('/notes/:idNote', authUser, deleteNote);
 
 /**
@@ -83,7 +87,6 @@ app.delete('/notes/:idNote', authUser, deleteNote);
  * ## Middleware Error ##
  * ######################
  */
-
 
 app.use((err, req, res, next) => {
     console.error(err);
@@ -106,8 +109,6 @@ app.use((req, res) => {
          message: 'Not found',
        });
     }); 
-
-
 
 app.listen(PORT, () => {
     console.log('Server listening at http://localhost:4000');

@@ -13,20 +13,17 @@ const selectNoteByIdQuery = async(idNote) => {
                 SELECT N.id, 
                     N.idUser,
                     N.title,
-                    N.description,
+                    N.category,
                     N.createdAt
                 FROM notes N
                 LEFT JOIN users U ON N.idUser = U.id
                 WHERE N.id LIKE ?
-
             `, 
             [idNote]
         );
-    
         if (notes.length < 1) {
             throw generateError('It does not exists any notes', 404);
         }
-
         return notes[0];
     } finally {
         if (connection) connection.release();
