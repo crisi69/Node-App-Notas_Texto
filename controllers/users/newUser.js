@@ -4,9 +4,9 @@ const { generateError } = require('../../helpers');
 const newUser = async (req, res, next) => {
     try {
         const { username, email, password } = req.body;
-
+       
         if (!username || !email || !password) {
-            throw generateError('Missing fields', 400)
+            throw generateError(`Missing fields: ${username} ${email} ${password}`, 400)
         }
 
         await insertUserQuery(username, email, password);

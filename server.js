@@ -2,11 +2,15 @@ require('dotenv').config();
 
 const express = require('express');
 const morgan = require('morgan');
+const cors = require('cors');
+
+
 
 // Ponemos a nodemon a la escucha.
 const { PORT } = process.env
 
 const app = express();
+app.use(cors());
 
 // Middleware que hace uso del logger "morgan".
 app.use(morgan('dev'));
@@ -24,6 +28,7 @@ app.use(express.json());
 const authUser = require('./middlewares/authUser');
 const authUserOptional = require('./middlewares/authUserOptional')
 
+
    
 /**
  * ########################
@@ -38,12 +43,19 @@ const newUser = require('./controllers/users/newUser');
 // Creamos el loguin de un usuario.
 const loginUser = require('./controllers/users/loginUser');
 
+const getOwnUser = require('./controllers/users/getOwnUser');
+
 
 // Registro de un nuevo usuario.
 app.post('/users', newUser);
 
 // Login de un usuario.
 app.post('/users/login', loginUser);
+
+//info ussuario logeado
+app.get('/users', authUser, getOwnUser)
+
+app.get('/users')
 
 
 /**
