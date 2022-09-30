@@ -13,9 +13,11 @@ const selectUserNotesQuery = async (idUser) => {
                 SELECT id, 
                     title,
                     category,
+                    description,
                     createdAt 
                 FROM notes
                 WHERE idUser LIKE ?
+                ORDER by createdAt DESC
             `,
             [idUser]
         );

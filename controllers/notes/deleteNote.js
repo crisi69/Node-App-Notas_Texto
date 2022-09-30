@@ -1,4 +1,4 @@
-const deleteNoteQuery =require('../../db/noteQueries/deleteNoteQuery');
+const deleteNoteQuery = require('../../db/noteQueries/deleteNoteQuery');
 const selectNoteByIdQuery = require('../../db/noteQueries/selectNoteByIdQuery');
 
 const { generateError } = require('../../helpers');

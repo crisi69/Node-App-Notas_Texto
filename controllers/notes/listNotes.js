@@ -6,9 +6,7 @@ const listNotes = async (req, res, next) => {
 
         res.send({
             status: 'ok',
-            data: {
-                notes,
-            },
+            data: notes,
         });
     } catch (err) {
         next(err);

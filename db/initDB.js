@@ -23,7 +23,6 @@ async function main() {
                 createdAt TIMESTAMP NOT NULL
             ) 
         `);
-
         await connection.query(`
             CREATE TABLE IF NOT EXISTS notes (
                 id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
@@ -35,6 +34,7 @@ async function main() {
                 createdAt TIMESTAMP NOT NULL
             )
         `);
+
 
         const hashedPassword = await bcrypt.hash('123456', 10);
 

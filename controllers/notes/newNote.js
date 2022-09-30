@@ -20,14 +20,14 @@ const newNote = async (req, res, next) => {
         res.send({
             status: 'ok',
             data: {
-                note: {
-                    id: idNote,
-                    title,
-                    description,
-                    category,
-                    idUser: req.user.id,
-                    createdAt: new Date(),
-                },
+                
+                id: idNote,
+                title,
+                description,
+                category,
+                idUser: req.user.id,
+                createdAt: new Date(),
+                
             },
         });
     } catch (err) {

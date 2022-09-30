@@ -8,9 +8,7 @@ const getNote = async (req, res, next) => {
 
         res.send({
             status: 'ok',
-            data: {
-                note,
-            },
+            data: note,
         });
     } catch (err) {
         next(err);
