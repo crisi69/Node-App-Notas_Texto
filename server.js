@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
+const fileUpload = require('express-fileupload');
 
 // Ponemos a nodemon a la escucha.
 const { PORT } = process.env;
@@ -14,7 +15,12 @@ app.use(morgan('dev'));
 
 // Middleware que deserializa un body con formato "raw" y lo pone disponible en "req.body".
 app.use(express.json());
+app.use(express.static('uploads'));
 app.use(cors());
+
+// Middleware que deserializa "form-data"
+
+app.use(fileUpload());
 
 /**
  *
@@ -92,6 +98,8 @@ app.put('/notes/:idNote', authUser, editNote);
 
 // Eliminar una nota.
 app.delete('/notes/:idNote', authUser, deleteNote);
+
+// permite envar ficheros estaticos//
 
 /**
  * ######################

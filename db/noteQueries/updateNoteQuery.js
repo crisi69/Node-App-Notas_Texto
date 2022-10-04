@@ -1,6 +1,6 @@
 const getConnection = require('../getConnection');
 
-const updateNoteQuery = async (title, description, category, idNote) => {
+const updateNoteQuery = async (title, description, category, image, idNote) => {
     let connection;
 
     try {
@@ -8,7 +8,7 @@ const updateNoteQuery = async (title, description, category, idNote) => {
 
         await connection.query(
             `UPDATE notes SET title = ?, description = ?, category = ? WHERE id = ?`,
-            [title, description, category, idNote]
+            [title, description, category, image, idNote]
         );
     } finally {
         if (connection) connection.release();

@@ -15,6 +15,7 @@ const selectAllNotesQuery = async () => {
                     title,
                     category,
                     description,
+                    image,
                     createdAt
                 FROM notes
                 ORDER by createdAt DESC

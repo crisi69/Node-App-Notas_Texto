@@ -12,7 +12,7 @@ async function main() {
 
         await connection.query('DROP TABLE IF EXISTS notes');
         await connection.query('DROP TABLE IF EXISTS users');
-    
+
         await connection.query(`
             CREATE TABLE IF NOT EXISTS users (
                 id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
@@ -31,10 +31,10 @@ async function main() {
                 title VARCHAR(60) UNIQUE NOT NULL,
                 description TEXT NOT NULL,
                 category ENUM ('Rutas', 'Hoteles', 'Restaurantes', 'Campings') NOT NULL,
+                image VARCHAR(100),
                 createdAt TIMESTAMP NOT NULL
             )
         `);
-
 
         const hashedPassword = await bcrypt.hash('123456', 10);
 
