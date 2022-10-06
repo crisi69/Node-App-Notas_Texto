@@ -8,7 +8,7 @@ const editNote = async (req, res, next) => {
         const { idNote } = req.params;
 
         // Obtenemos los campos del body.
-        let { title, description, category } = req.body;
+        let { title, description, category, place } = req.body;
 
         // Si faltan todos los campos, lanzamos un error.
         if (!title && !description && !category) {
@@ -26,7 +26,14 @@ const editNote = async (req, res, next) => {
         }
 
         // Actualizamos los datos del usuario.
-        await udpateNoteQuery(title, description, category, image, idNote);
+        await udpateNoteQuery(
+            title,
+            description,
+            category,
+            place,
+            image,
+            idNote
+        );
 
         res.send({
             status: 'ok',

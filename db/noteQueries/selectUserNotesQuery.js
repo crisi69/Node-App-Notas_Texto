@@ -14,6 +14,7 @@ const selectUserNotesQuery = async (idUser) => {
                     title,
                     category,
                     description,
+                    place,
                     image,
                     createdAt 
                 FROM notes

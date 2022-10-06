@@ -15,6 +15,7 @@ const selectAllNotesQuery = async () => {
                     title,
                     category,
                     description,
+                    place,
                     image,
                     createdAt
                 FROM notes

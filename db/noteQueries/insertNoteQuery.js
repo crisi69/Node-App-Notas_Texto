@@ -1,6 +1,13 @@
 const getConnection = require('../getConnection');
 
-const insertNoteQuery = async (title, description, category, image, idUser) => {
+const insertNoteQuery = async (
+    title,
+    description,
+    category,
+    place,
+    image,
+    idUser
+) => {
     let connection;
 
     try {
@@ -9,9 +16,9 @@ const insertNoteQuery = async (title, description, category, image, idUser) => {
         const createdAt = new Date();
 
         const [newNote] = await connection.query(
-            `INSERT INTO notes (title, description, category, image, idUser, createdAt) 
-            VALUES (?, ?, ?, ?, ?, ?)`,
-            [title, description, category, image, idUser, createdAt]
+            `INSERT INTO notes (title, description, category, place, image, idUser, createdAt) 
+            VALUES (?, ?, ?, ?, ?, ?, ?)`,
+            [title, description, category, place, image, idUser, createdAt]
         );
 
         return {
@@ -20,6 +27,7 @@ const insertNoteQuery = async (title, description, category, image, idUser) => {
             title,
             description,
             category,
+            place,
             image,
             createdAt,
         };

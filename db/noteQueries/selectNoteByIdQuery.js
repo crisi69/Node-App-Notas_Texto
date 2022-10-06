@@ -14,6 +14,7 @@ const selectNoteByIdQuery = async (idNote) => {
                     N.idUser,
                     N.title,
                     N.category,
+                    place,
                     image,
                     N.createdAt
                 FROM notes N

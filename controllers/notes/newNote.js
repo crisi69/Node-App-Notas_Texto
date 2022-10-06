@@ -4,7 +4,7 @@ const { generateError, savePhoto } = require('../../helpers');
 
 const newNote = async (req, res, next) => {
     try {
-        const { title, description, category } = req.body;
+        const { title, description, category, place } = req.body;
 
         if (!title || !description || !category) {
             throw generateError('Empty fields', 400);
@@ -18,6 +18,7 @@ const newNote = async (req, res, next) => {
             title,
             description,
             category,
+            place,
             image,
             req.user.id
         );
@@ -29,6 +30,7 @@ const newNote = async (req, res, next) => {
                 title,
                 description,
                 category,
+                place,
                 image,
                 idUser: req.user.id,
                 createdAt: new Date(),
