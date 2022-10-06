@@ -2,23 +2,24 @@ const getConnection = require('../getConnection');
 
 const { generateError } = require('../../helpers');
 
-const selectNoteByIdQuery = async(idNote) => {
+const selectNoteByIdQuery = async (idNote) => {
     let connection;
 
     try {
         connection = await getConnection();
-    
-        let [notes] = await connection.query (
+
+        let [notes] = await connection.query(
             `
                 SELECT N.id, 
                     N.idUser,
                     N.title,
                     N.category,
+                    image,
                     N.createdAt
                 FROM notes N
                 LEFT JOIN users U ON N.idUser = U.id
                 WHERE N.id LIKE ?
-            `, 
+            `,
             [idNote]
         );
         if (notes.length < 1) {

@@ -1,5 +1,6 @@
 const deleteNoteQuery = require('../../db/noteQueries/deleteNoteQuery');
 const selectNoteByIdQuery = require('../../db/noteQueries/selectNoteByIdQuery');
+const { deletePhoto } = require('../../helpers');
 
 const { generateError } = require('../../helpers');
 
@@ -11,6 +12,10 @@ const deleteNote = async (req, res, next) => {
 
         if (note.idUser !== req.user?.id) {
             throw generateError('You need some permissions', 401);
+        }
+
+        if (note.image) {
+            await deletePhoto(note.image);
         }
 
         await deleteNoteQuery(idNote);

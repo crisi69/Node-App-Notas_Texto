@@ -7,7 +7,7 @@ const updateNoteQuery = async (title, description, category, image, idNote) => {
         connection = await getConnection();
 
         await connection.query(
-            `UPDATE notes SET title = ?, description = ?, category = ? WHERE id = ?`,
+            `UPDATE notes SET title = ?, description = ?, category = ?, image = ? WHERE id = ?`,
             [title, description, category, image, idNote]
         );
     } finally {

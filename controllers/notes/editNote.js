@@ -1,30 +1,32 @@
 const selectNoteByIdQuery = require('../../db/noteQueries/selectNoteByIdQuery');
 const udpateNoteQuery = require('../../db/noteQueries/updateNoteQuery');
 
-const { generateError } = require('../../helpers');
+const { generateError, deletePhoto, savePhoto } = require('../../helpers');
 
 const editNote = async (req, res, next) => {
     try {
-        const {idNote} = req.params
-        
+        const { idNote } = req.params;
+
         // Obtenemos los campos del body.
         let { title, description, category } = req.body;
 
         // Si faltan todos los campos, lanzamos un error.
-         if (!title && !description && !category) {
-             throw generateError('Empty fields', 400);
+        if (!title && !description && !category) {
+            throw generateError('Empty fields', 400);
         }
 
         // Obtenemos la info de la nota.
         const note = await selectNoteByIdQuery(idNote);
 
+        let image = note.image;
 
-        title = title || note.title;
-        description = description || note.description;
-        category = category || note.category;
-            
+        if (req.files?.image) {
+            if (note.image) await deletePhoto(note.image);
+            image = await savePhoto(req.files.image);
+        }
+
         // Actualizamos los datos del usuario.
-        await udpateNoteQuery(title, description, category, idNote)
+        await udpateNoteQuery(title, description, category, image, idNote);
 
         res.send({
             status: 'ok',

@@ -26,10 +26,10 @@ const savePhoto = async (img) => {
     }
     const sharpImg = sharp(img.data);
 
-    sharpImg.resize(500);
+    sharpImg.resize({ width: 450 });
+    sharpImg.resize({ height: 300 });
 
-    const image = `${uuid(24)}.jpg`;
-
+    const image = `${uuid()}.jpg`;
     const imgPath = path.join(uploadsPath, image);
 
     await sharpImg.toFile(imgPath);
@@ -38,11 +38,18 @@ const savePhoto = async (img) => {
 };
 // DELETE PHOTO//
 
-const deletePhoto = async (imgName) => {
+const deletePhoto = async (image) => {
     try {
-        const imgPath = path.join(__dirname, process.env.UPLOADS_DIR, imgName);
+        const imgPath = path.join(__dirname, process.env.UPLOADS_DIR, image);
+        try {
+            await fs.access(imgPath);
+        } catch (error) {
+            return false;
+        }
         await fs.unlink(imgPath);
-    } catch {
+        return true;
+    } catch (err) {
+        console.log(err);
         throw generateError('Error deleting photo');
     }
 };
